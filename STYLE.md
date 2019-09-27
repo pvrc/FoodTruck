@@ -139,6 +139,7 @@ public class Example : MonoBehavior {
     #endregion
   
     #region Settings
+    /// <summary>Maximum amount that Counter can reach</summary>
     [Tooltip("Maximum amount that Counter can reach"), Header("Settings")]
     public int MaxCount = 5;
     #endregion
