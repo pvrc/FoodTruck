@@ -7,7 +7,8 @@ Created by Purdue Virtual Reality Club \
 ## Resources
 If you're contributing code, please check out the
 [Contributing Guide](https://github.com/pvrc/FoodTruck/blob/master/CONTRIBUTING.md) for instructions on creating
-a pull request. You can also check out the [Wiki](https://github.com/pvrc/FoodTruck/wiki) for more development information.
+a pull request, and the [Style Guide](https://github.com/pvrc/FoodTruck/blob/master/STYLE.md) for coding guidelines.
+You can also check out the [Wiki](https://github.com/pvrc/FoodTruck/wiki) for more development information.
 
 ## Contributors
 - Christopher Sculley [https://csculley.com](https://csculley.com), Principal maintainer
