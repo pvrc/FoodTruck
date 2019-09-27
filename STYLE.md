@@ -39,8 +39,8 @@ public int Counter {
 
 When viewed, by other scripts, they will be able to use `Counter` to get values, but not modify them. However, you may have
 noticed that when setting variables to protected or private, they are hidden from Unity's Inspector by default. We can force
-it to be shown via an [Attribute](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/).
-In this case, we'll use the UnityEngine-specific attribute `[SerializeField]` like this:
+it to be shown via an [Attribute](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/),
+which can only be used on variables. In this case, we'll use the UnityEngine-specific attribute `[SerializeField]` like this:
 ```csharp
 #region Properties
 [SerializeField]
@@ -67,7 +67,9 @@ public int Counter {
 #endregion
 ```
 
-In addition, we can also use Visual Studio XML-markup tags like so, but keep in mind that **attributes must go after comments**!
+In addition, we can also use
+[Visual Studio XML-markup tags](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/xmldoc/recommended-tags-for-documentation-comments)
+to document our code like so, but keep in mind that **attributes must go after comments**!
 ```csharp
 #region Properties
 [SerializeField,
@@ -92,6 +94,7 @@ references are checked as soon as you can, which I typically do in a new region 
 ```csharp
 #region Unity Methods
 /// <summary>Checks references and sets initial values</summary>
+/// <exception cref="System.ArgumentNullException">Thrown when ball is null</exception>
 protected virtual void Awake() {
     // Check references
     if (ball == null)
@@ -151,6 +154,7 @@ public class Example : MonoBehavior {
   
     #region Unity Methods
     /// <summary>Checks references and sets initial values</summary>
+    /// <exception cref="System.ArgumentNullException">Thrown when ball is null</exception>
     protected virtual void Awake() {
         // Check references
         if (ball == null)
