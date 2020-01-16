@@ -7994,7 +7994,7 @@ Transform:
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
   m_Father: {fileID: 1081908605}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -50, y: 0, z: 0}
 --- !u!1 &375834218
 GameObject:
@@ -8118,11 +8118,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561493896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.351, z: 0}
-  m_LocalScale: {x: 0.36, y: 0.07, z: 0.49}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.36, y: 0.06999999, z: 0.49000007}
   m_Children: []
-  m_Father: {fileID: 1081908605}
-  m_RootOrder: 2
+  m_Father: {fileID: 1547485772}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &561493898
 BoxCollider:
@@ -14626,9 +14626,8 @@ Transform:
   m_LocalPosition: {x: 0.395, y: 1.523, z: 1.765}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1547485772}
   - {fileID: 337986350}
-  - {fileID: 1352150880}
-  - {fileID: 561493897}
   m_Father: {fileID: 892279061}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14949,7 +14948,7 @@ GameObject:
   - component: {fileID: 1352150885}
   - component: {fileID: 1352150884}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Throttle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14962,12 +14961,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352150879}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.014, z: -0.011}
-  m_LocalScale: {x: 0.05, y: 0.3, z: 0.05}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.412, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.29999998, z: 0.050000012}
   m_Children: []
-  m_Father: {fileID: 1081908605}
-  m_RootOrder: 1
+  m_Father: {fileID: 1547485772}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1352150881
 CapsuleCollider:
@@ -15038,14 +15037,14 @@ HingeJoint:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352150879}
   m_ConnectedBody: {fileID: 561493901}
-  m_Anchor: {x: 0, y: -0.97, z: 0}
+  m_Anchor: {x: 0, y: -1, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 1.0571438, z: -0.022449056}
+  m_ConnectedAnchor: {x: 0, y: 1.6000006, z: 0}
   m_UseSpring: 1
   m_Spring:
-    spring: 10000
-    damper: 1000
+    spring: 50
+    damper: 5
     targetPosition: 0
   m_UseMotor: 0
   m_Motor:
@@ -15073,13 +15072,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352150879}
   serializedVersion: 2
-  m_Mass: 0.01
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 110
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &1365534675
 GameObject:
@@ -15175,6 +15174,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365534675}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1547485771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1547485772}
+  m_Layer: 0
+  m_Name: ThrottleCombo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1547485772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547485771}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.354, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1352150880}
+  - {fileID: 561493897}
+  m_Father: {fileID: 1081908605}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1657042389
 GameObject:
   m_ObjectHideFlags: 0
@@ -15275,7 +15306,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-175028
+  m_Name: pb_Mesh36028
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
