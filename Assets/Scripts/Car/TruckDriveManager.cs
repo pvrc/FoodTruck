@@ -14,11 +14,11 @@ public class TruckDriveManager : MonoBehaviour {
 
     /// <summary>Deviation in degrees to steer from front</summary>
     public float SteeringAngle {
-        get => wheelCollider[0].steerAngle;
+        get => FrontWheels[0].transform.localEulerAngles.y;
         set {
             var angle = Mathf.Clamp(value, -MaxSteeringDelta, MaxSteeringDelta);
-            foreach (var w in wheelCollider)
-                w.steerAngle = angle;
+            foreach (var w in FrontWheels)
+                w.transform.localEulerAngles = new Vector3(0, angle, 0);
         }
     }
     #endregion
@@ -29,35 +29,61 @@ public class TruckDriveManager : MonoBehaviour {
     Header("Settings")]
     public float MaxSteeringDelta = 75;
 
+    /// <summary>Steering wheel offset in degrees</summary>
+    [Range(0, 360), Tooltip("Steering wheel offset in degrees")]
+    public float SteeringWheelOffset = 270;
+
+    /// <summary>Factor to break when throttle is 0</summary>
+    public float BrakeFactor = 10;
+
     public float MaxTorque = 15;
     #endregion
 
     #region References
     [Header("References")]
-    public WheelCollider[] wheelCollider;
+    public List<WheelCollider> FrontWheels = new List<WheelCollider>();
+    public List<WheelCollider> BackWheels = new List<WheelCollider>();
+    #endregion
+
+    #region Vars
+    protected List<WheelCollider> _allWheels = null;
+    protected List<WheelCollider> AllWheels {
+        get {
+            if (_allWheels == null) {
+                _allWheels = new List<WheelCollider>();
+                _allWheels.AddRange(FrontWheels);
+                _allWheels.AddRange(BackWheels);
+            }
+            return _allWheels;
+        }
+    }
     #endregion
 
     #region Unity Methods
     /// <summary>Check initial references</summary>
     protected void Awake() {
-        if (wheelCollider == null) throw new ArgumentNullException();
-        foreach (var w in wheelCollider)
+        if (FrontWheels == null) throw new ArgumentNullException();
+        if (BackWheels == null) throw new ArgumentNullException();
+        foreach (var w in FrontWheels)
+            if (w == null) throw new ArgumentNullException();
+        foreach (var w in BackWheels)
             if (w == null) throw new ArgumentNullException();
 
-        if (wheelCollider.Length != 4) throw new ArgumentOutOfRangeException();
+        if (FrontWheels.Count != 2) throw new ArgumentException();
+        if (BackWheels.Count != 2) throw new ArgumentException();
     }
 
+    /// <summary>Sets torque on all wheels</summary>
     protected void Update() {
-        // Set torque on all wheels
-        if (Torque > 0) {
-            foreach (var w in wheelCollider) {
+        if (Mathf.Abs(Torque) > Mathf.Epsilon) {
+            foreach (var w in AllWheels) {
                 w.brakeTorque = 0;
                 w.motorTorque = Torque;
             }
         } else {
-            foreach (var w in wheelCollider) {
+            foreach (var w in AllWheels) {
                 w.motorTorque = 0;
-                w.brakeTorque = -Torque;
+                w.brakeTorque = Mathf.Abs(BrakeFactor);
             }
         }
     }
