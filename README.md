@@ -10,5 +10,5 @@ If you're contributing code, please check out the
 a pull request, and the [Style Guide](https://github.com/pvrc/FoodTruck/blob/master/STYLE.md) for coding guidelines.
 You can also check out the [Wiki](https://github.com/pvrc/FoodTruck/wiki) for more development information.
 
-## Contributors
-- Christopher Sculley [https://csculley.com](https://csculley.com), Principal maintainer
+## Contact
+For inquiries, please contact the officers through the Discord server.
